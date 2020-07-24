@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  gridsome:
+    build:
+      context: "./gridsome"
+    container_name: gridsome
+    ports:
+      # 左がホスト，右がコンテナ
+      - 8080:8080
+    working_dir: /app
+    # コンテナを立ち上げ続ける
+    tty: true
+    volumes:
+      - .:/app
+    # 実行するコマンド
+    command: sh -c "cd my-blog && gridsome develop"
+# volumes:
+#   gridsome_data:
